@@ -30,7 +30,8 @@ export class News extends Component {
     }
 
     async updateNews() {
-        const url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=e6136309f466458cb7eca84e07976a9a&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+       // const url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=e6136309f466458cb7eca84e07976a9a&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+        const url=`https://gnews.io/api/v4/top-headlines?category=${this.props.category}&lang=en&country=in&&apikey=475e99b05f45e3f26925476e644515b8&page=${this.state.page}&pageSize=${this.props.pageSize}`;
         this.setState({ loading: true });
         let data = await fetch(url);
         let parsedData = await data.json() 
@@ -67,7 +68,7 @@ export class News extends Component {
                         return <div className="col-md-4" key={element.url}>
                             <NewsItem title={element.title ? element.title : ""} description={element.description ? element.description : ""} imageUrl={element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} source={element.source.name} />
                         </div>
-                    })): null }
+                    })):null}
 
 {/*  
                     {!this.state.loading && this.state.articles.map((element) => {
